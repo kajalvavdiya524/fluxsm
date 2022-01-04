@@ -1,0 +1,92 @@
+-- For two way syncing (settings page)
+ALTER TABLE `store` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `organization_id`;
+ALTER TABLE `taxrate` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `active`;
+ALTER TABLE `employee` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `active`;
+ALTER TABLE `teammember` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `role_id`;
+ALTER TABLE `paymentmethod` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `active`;
+
+-- For storing 'reference_number' as string this query needs to be executed on central server.
+ALTER TABLE `store` CHANGE `reference_number` `reference_number` VARCHAR(100) NULL DEFAULT NULL;
+
+-- For handling cache on (settings page)
+ALTER TABLE `store` ADD `caching` TINYINT(1) NOT NULL DEFAULT '1' AFTER `is_updated`;
+
+-- For two way syncing (inventory page)
+ALTER TABLE `inventory` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `reserved`;
+ALTER TABLE `invoice` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `paid`;
+ALTER TABLE `vendor` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `active`;
+
+-- For two way syncing (customer, contact, vehicle)
+ALTER TABLE `customer` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `internal`;
+ALTER TABLE `contact` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `customer_id`;
+ALTER TABLE `vehicle` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `customer_id`;
+
+-- For handling cache on (customer page)
+ALTER TABLE `customer` ADD `caching` TINYINT(1) NOT NULL DEFAULT '1' AFTER `is_updated`;
+ALTER TABLE `customer` CHANGE `caching` `cached_version` INT(11) NOT NULL DEFAULT '1';
+
+-- Store details caching into timestamp (19 Oct 2019)
+ALTER TABLE `store` CHANGE `caching` `cached_version` INT(11) NOT NULL DEFAULT '1';
+
+-- Create delete_data table (06 Nov 2019)
+CREATE TABLE `deleted_data` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `tbl` varchar(100) NOT NULL,
+  `delete_column` varchar(100) NOT NULL,
+  `delete_value` int(11) UNSIGNED NOT NULL,
+  `store_id` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB;
+
+-- For two way syncing order (08 Dec 2019)
+ALTER TABLE `order` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `optcounter`;
+
+-- Create appointment table (18 April 2020)
+CREATE TABLE `appointment` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `extrnid` int(11) DEFAULT NULL,
+  `store_id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `requested_date` date NOT NULL,
+  `work_requested` text NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_updated` TINYINT(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+-- Alter customer noter column in order table (19 April 2020)
+ALTER TABLE `order` CHANGE `customernotes` `customernotes` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL;
+
+-- Create inspectionreport table (03 May 2020)
+CREATE TABLE `inspectionreport` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `extrnid` int(11) DEFAULT NULL,
+  `store_id` int(11) NOT NULL,
+  `order_id` INT(11) UNSIGNED NOT NULL,
+  `preliminary_inspection` TEXT NOT NULL,
+  `cluster` TEXT NOT NULL,
+  `under_hood` TEXT NOT NULL,
+  `under_car` TEXT NOT NULL,
+  `steering_suspension` TEXT NOT NULL,
+  `tires` TEXT NOT NULL,
+  `brakes` TEXT NOT NULL,
+  `tech_initials` TEXT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_updated` TINYINT(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+-- Add is_updated column to orderpayinfo table (10 May 2020)
+ALTER TABLE `orderpayinfo` ADD `is_updated` TINYINT(1) NOT NULL DEFAULT '0' AFTER `checknumber`;
+
+-- Add secret_key column to store table (20 June 2020)
+ALTER TABLE `store` ADD `secret_key` VARCHAR(32) NULL DEFAULT NULL AFTER `cached_version`, ADD UNIQUE `idx-store_secret_key` (`secret_key`(32));
+
+CREATE TABLE `user_store` (
+ `user_id` int(11) NOT NULL,
+ `store_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{HTTPS} off
+		RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
+        RewriteRule ^features/?$ features.html [NC,L]
+        RewriteRule ^screenshots/?$ screenshots.html [NC,L]
+        RewriteRule ^editions/?$ editions.html [NC,L]
+        RewriteRule ^faq/?$ faq.html [NC,L]
+        RewriteRule ^contact/?$ contact.html [NC,L]
+        
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule api/v1/(.*)$ api/v1/api.php?request=$1 [QSA,NC,L]
+</IfModule>

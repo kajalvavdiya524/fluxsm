@@ -1,0 +1,179 @@
+ALTER TABLE `contact` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `customer` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `employee` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `id`;
+ALTER TABLE `employee` ADD `store_id` INT(11) NULL DEFAULT NULL AFTER `id`;
+ALTER TABLE `inventory` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `invoice` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `invoiceitem` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `itemtype` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `order` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `orderitem` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `orderpayinfo` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `paymentmethod` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `taxrate` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `template` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `templateitem` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `vehicle` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+ALTER TABLE `vendor` ADD `extrnid` INT(11) NULL DEFAULT NULL AFTER `store_id`;
+
+ALTER TABLE `invoice` CHANGE `number` `number` VARCHAR(100) NULL DEFAULT NULL;
+
+-- contact
+UPDATE contact set extrnid=id;
+CREATE TABLE backupcontact LIKE contact;
+RENAME TABLE contact TO contactold, backupcontact TO contact;
+ALTER TABLE contact DROP id;
+ALTER TABLE contact DROP PRIMARY KEY;
+ALTER TABLE contact ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT contact(store_id, extrnid, firstname, lastname, phone1type, phone1, phone2type, phone2, phone3type, phone3, email, isprimary, customer_id)  SELECT store_id, extrnid, firstname, lastname, phone1type, phone1, phone2type, phone2, phone3type, phone3, email, isprimary, customer_id FROM contactold;
+DROP TABLE contactold;
+
+-- customer
+UPDATE customer set extrnid=id;
+CREATE TABLE backupcustomer LIKE customer;
+RENAME TABLE customer TO customerold, backupcustomer TO customer;
+ALTER TABLE customer DROP id;
+ALTER TABLE customer DROP PRIMARY KEY;
+ALTER TABLE customer ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT customer(store_id,extrnid,usertype,taxexempt,taxexemptnum,businessname,addressline1,addressline2,addressline3,city,state,zip,internal)  SELECT store_id,extrnid,usertype,taxexempt,taxexemptnum,businessname,addressline1,addressline2,addressline3,city,state,zip,internal FROM customerold;
+DROP TABLE customerold;
+
+-- employee
+-- SELECT GROUP_CONCAT(COLUMN_NAME) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'fluxshopmanager_com' AND TABLE_NAME = 'employee'
+UPDATE employee set extrnid=id;
+CREATE TABLE backupemployee LIKE employee;
+RENAME TABLE employee TO employeeold, backupemployee TO employee;
+ALTER TABLE employee DROP id;
+ALTER TABLE employee ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT employee(extrnid,name,active)  SELECT extrnid,name,active FROM employeeold;
+DROP TABLE employeeold;
+
+-- inventory
+UPDATE inventory set extrnid=id;
+CREATE TABLE backupinventory LIKE inventory;
+RENAME TABLE inventory TO inventoryold, backupinventory TO inventory;
+ALTER TABLE inventory DROP id;
+ALTER TABLE inventory DROP PRIMARY KEY;
+ALTER TABLE inventory ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT inventory(store_id,extrnid,manufacturer,partnumber,description,cost,retail,quantity,reserved)  SELECT store_id,extrnid,manufacturer,partnumber,description,cost,retail,quantity,reserved FROM inventoryold;
+DROP TABLE inventoryold;
+
+-- invoice
+UPDATE invoice set extrnid=id;
+CREATE TABLE backupinvoice LIKE invoice;
+RENAME TABLE invoice TO invoiceold, backupinvoice TO invoice;
+ALTER TABLE invoice DROP id;
+ALTER TABLE invoice DROP PRIMARY KEY;
+ALTER TABLE invoice ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT invoice(store_id,extrnid,number,vendor_id,created,paid)  SELECT store_id,extrnid,number,vendor_id,created,paid FROM invoiceold;
+DROP TABLE invoiceold;
+
+-- invoiceitem
+UPDATE invoiceitem set extrnid=id;
+CREATE TABLE backupinvoiceitem LIKE invoiceitem;
+RENAME TABLE invoiceitem TO invoiceitemold, backupinvoiceitem TO invoiceitem;
+ALTER TABLE invoiceitem DROP id;
+ALTER TABLE invoiceitem DROP PRIMARY KEY;
+ALTER TABLE invoiceitem ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT invoiceitem(store_id,extrnid,invoice_id,inventory_id,partnumber,quantity,cost)  SELECT store_id,extrnid,invoice_id,inventory_id,partnumber,quantity,cost FROM invoiceitemold;
+DROP TABLE invoiceitemold;
+
+-- itemtype
+UPDATE itemtype set extrnid=id;
+CREATE TABLE backupitemtype LIKE itemtype;
+RENAME TABLE itemtype TO itemtypeold, backupitemtype TO itemtype;
+ALTER TABLE itemtype DROP id;
+ALTER TABLE itemtype DROP PRIMARY KEY;
+ALTER TABLE itemtype ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT itemtype(store_id,extrnid,name,category,dotrequired)  SELECT store_id,extrnid,name,category,dotrequired FROM itemtypeold;
+DROP TABLE itemtypeold;
+
+-- order
+UPDATE `order` set extrnid=id;
+CREATE TABLE backuporder LIKE `order`;
+RENAME TABLE `order` TO orderold, backuporder TO `order`;
+ALTER TABLE `order` DROP id;
+ALTER TABLE `order` DROP PRIMARY KEY;
+ALTER TABLE `order` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `order`(store_id,extrnid,created,updated,type,status,promisedtime,starttime,startdate,duration,dot,mileage,customernotes,teammember_id,contact_id,vehicle_id,ordertotal,ordertax,ordermargin,optcounter)  SELECT store_id,extrnid,created,updated,type,status,promisedtime,starttime,startdate,duration,dot,mileage,customernotes,teammember_id,contact_id,vehicle_id,ordertotal,ordertax,ordermargin,optcounter FROM orderold;
+DROP TABLE orderold;
+
+-- orderitem
+UPDATE `orderitem` set extrnid=id;
+CREATE TABLE backuporderitem LIKE `orderitem`;
+RENAME TABLE `orderitem` TO orderitemold, backuporderitem TO `orderitem`;
+ALTER TABLE `orderitem` DROP id;
+ALTER TABLE `orderitem` DROP PRIMARY KEY;
+ALTER TABLE `orderitem` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `orderitem`(store_id,extrnid,order_id,itemtype_id,partnumber,description,quantity,retail,cost,taxcat,vendor_id,dotnumber,invoicenumber,tax)  SELECT store_id,extrnid,order_id,itemtype_id,partnumber,description,quantity,retail,cost,taxcat,vendor_id,dotnumber,invoicenumber,tax FROM orderitemold;
+DROP TABLE orderitemold;
+
+-- orderpayinfo
+UPDATE `orderpayinfo` set extrnid=id;
+CREATE TABLE backuporderpayinfo LIKE `orderpayinfo`;
+RENAME TABLE `orderpayinfo` TO orderpayinfoold, backuporderpayinfo TO `orderpayinfo`;
+ALTER TABLE `orderpayinfo` DROP id;
+ALTER TABLE `orderpayinfo` DROP PRIMARY KEY;
+ALTER TABLE `orderpayinfo` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `orderpayinfo`(store_id,extrnid,order_id,paymentmethod_id,amount,paydate,closedmethod,checknumber)  SELECT store_id,extrnid,order_id,paymentmethod_id,amount,paydate,closedmethod,checknumber FROM orderpayinfoold;
+DROP TABLE orderpayinfoold;
+
+-- paymentmethod
+UPDATE `paymentmethod` set extrnid=id;
+CREATE TABLE backuppaymentmethod LIKE `paymentmethod`;
+RENAME TABLE `paymentmethod` TO paymentmethodold, backuppaymentmethod TO `paymentmethod`;
+ALTER TABLE `paymentmethod` DROP id;
+ALTER TABLE `paymentmethod` DROP PRIMARY KEY;
+ALTER TABLE `paymentmethod` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `paymentmethod`(store_id,extrnid,name,paymenttype_id,open,`default`,active)  SELECT store_id,extrnid,name,paymenttype_id,open,'default',active FROM paymentmethodold;
+DROP TABLE paymentmethodold;
+
+-- taxrate
+UPDATE `taxrate` set extrnid=id;
+CREATE TABLE backuptaxrate LIKE `taxrate`;
+RENAME TABLE `taxrate` TO taxrateold, backuptaxrate TO `taxrate`;
+ALTER TABLE `taxrate` DROP id;
+ALTER TABLE `taxrate` DROP PRIMARY KEY;
+ALTER TABLE `taxrate` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `taxrate`(store_id,extrnid,name,category,rate,exemption,active)  SELECT store_id,extrnid,name,category,rate,exemption,active FROM taxrateold;
+DROP TABLE taxrateold;
+
+-- template
+UPDATE `template` set extrnid=id;
+CREATE TABLE backuptemplate LIKE `template`;
+RENAME TABLE `template` TO templateold, backuptemplate TO `template`;
+ALTER TABLE `template` DROP id;
+ALTER TABLE `template` DROP PRIMARY KEY;
+ALTER TABLE `template` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `template`(store_id,extrnid,name)  SELECT store_id,extrnid,name FROM templateold;
+DROP TABLE templateold;
+
+-- templateitem
+UPDATE `templateitem` set extrnid=id;
+CREATE TABLE backuptemplateitem LIKE `templateitem`;
+RENAME TABLE `templateitem` TO templateitemold, backuptemplateitem TO `templateitem`;
+ALTER TABLE `templateitem` DROP id;
+ALTER TABLE `templateitem` DROP PRIMARY KEY;
+ALTER TABLE `templateitem` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `templateitem`(store_id,extrnid,template_id,itemtype_id,partnumber,description,quantity,retail,cost,taxcat,vendor_id,dotnumber,invoicenumber,tax)  SELECT store_id,extrnid,template_id,itemtype_id,partnumber,description,quantity,retail,cost,taxcat,vendor_id,dotnumber,invoicenumber,tax FROM templateitemold;
+DROP TABLE templateitemold;
+
+-- vehicle
+UPDATE `vehicle` set extrnid=id;
+CREATE TABLE backupvehicle LIKE `vehicle`;
+RENAME TABLE `vehicle` TO vehicleold, backupvehicle TO `vehicle`;
+ALTER TABLE `vehicle` DROP id;
+ALTER TABLE `vehicle` DROP PRIMARY KEY;
+ALTER TABLE `vehicle` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `vehicle`(store_id,extrnid,year,make,model,trim,mileage,vin,fleetnum,license,active,customer_id)  SELECT store_id,extrnid,year,make,model,trim,mileage,vin,fleetnum,license,active,customer_id FROM vehicleold;
+DROP TABLE vehicleold;
+
+-- vendor
+UPDATE `vendor` set extrnid=id;
+CREATE TABLE backupvendor LIKE `vendor`;
+RENAME TABLE `vendor` TO vendorold, backupvendor TO `vendor`;
+ALTER TABLE `vendor` DROP id;
+ALTER TABLE `vendor` DROP PRIMARY KEY;
+ALTER TABLE `vendor` ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+INSERT `vendor`(vendorname,store_id,extrnid,firstname,lastname,phone1,phone2,email,address1,address2,zip,city,state,active)  SELECT vendorname,store_id,extrnid,firstname,lastname,phone1,phone2,email,address1,address2,zip,city,state,active FROM vendorold;
+DROP TABLE vendorold;

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Automotive Repair Shop POS &amp; Inventory Management | Flux Shop Manager</title>
+      <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/slicknav.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+	  <link rel="stylesheet" type="text/css" href="assets/css/ekko-lightbox.css">
+      <link rel="stylesheet" media="screen" href="assets/fonts/font-awesome/font-awesome.min.css">
+      <link rel="stylesheet" media="screen" href="assets/fonts/simple-line-icons.css">
+      <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.carousel.css">
+      <link rel="stylesheet" type="text/css" href="assets/extras/owl/owl.theme.css">
+      <link rel="stylesheet" type="text/css" href="assets/extras/animate.css">
+      <link rel="stylesheet" type="text/css" href="assets/extras/normalize.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/colors/flux.css" media="screen" />
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+	  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	  <link rel="manifest" href="/site.webmanifest">
+	  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	  <meta name="msapplication-TileColor" content="#ffffff">
+	  <meta name="theme-color" content="#ffffff">
+   </head>
+   <body>
+      <header id="header-wrap">
+         <nav class="navbar navbar-expand-md fixed-top scrolling-navbar nav-bg">
+            <div class="container">
+               <div class="navbar-header">
+                  <a class="navbar-brand" href="/">
+                  <img src="assets/img/logo.png" alt="">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+               </div>
+               <div class="collapse navbar-collapse" id="main-menu">
+                  <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                     <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                     </li>
+                     <li class="nav-item">
+						<a class="nav-link" href="/features">Features</a>
+					 </li>
+                     <li class="nav-item">
+						<a class="nav-link" href="/screenshots">Screenshots</a>
+                     </li>
+                     <li class="nav-item">
+						<a class="nav-link" href="/editions">Editions</a>
+                     </li>
+                     <li class="nav-item">
+						<a class="nav-link" href="/faq">FAQ</a>
+                     </li>
+                     <li class="nav-item">
+						<a class="nav-link" href="/contact">Contact Us</a>
+                     </li>
+                     <li class="nav-item">
+						<a class="nav-link" href="/admin/login.php">Log In</a>
+                     </li>
+                  </ul>
+               </div>
+               <ul class="wpb-mobile-menu">
+                  <li>
+					 <a class="nav-link active" href="/">Home</a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="/features">Features</a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="/screenshots">Screenshots</a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="/editions">Editions</a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="/faq">FAQ</a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="/contact">Contact Us</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/admin/login.php">Log In</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+         <div id="carousel-area">
+            <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+               <ol class="carousel-indicators">
+                  <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-slider" data-slide-to="1"></li>
+                  <li data-target="#carousel-slider" data-slide-to="2"></li>
+               </ol>
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <img class="d-block w-100" src="assets/img/slider/bg-1.jpg" alt="">
+                     <div class="carousel-caption">
+                        <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
+                           The Tools To Run Your Shop
+                        </h2>
+                        <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">Invoicing, inventory, and history available with a click of a button</h3>
+                        <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="/features">
+                        <i class="fa fa-wrench">
+                        </i>
+                        View Features
+                        </a>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <img class="d-block w-100" src="assets/img/slider/bg-2.jpg" alt="">
+                     <div class="carousel-caption">
+                        <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
+                           Easy To Use
+                        </h2>
+                        <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
+                           A simple user interface makes it easy without extensive training
+                        </h3>
+                        <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="/screenshots">
+                        <i class="fa fa-coffee">
+                        </i>
+                        See Screenshots
+                        </a>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <img class="d-block w-100" src="assets/img/slider/bg-3.jpg" alt="">
+                     <div class="carousel-caption">
+                        <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
+                           Cloud, On-Premise, and Hybrid Options
+                        </h2>
+                        <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
+                           Secured and backed-up information exactly where you want it
+                        </h3>
+                        <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="/editions">
+                        <i class="fa fa-cloud">
+                        </i>
+                        Compare Editions
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
+               <span class="carousel-control carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+               </a>
+               <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
+               <span class="carousel-control carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+               </a>
+            </div>
+         </div>
+      </header>
+      <section id="service-block-main" class="section">
+         <div class="container">
+            <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+               Why Choose Flux?
+            </h1>
+            <p class="section-subcontent">Flux was designed to offer the tools needed to manage your shop at a price that is easily affordable</p>
+            <div class="row">
+               <div class="col-sm-6 col-md-6 col-lg-3 col-xs-12">
+                  <div class="service-item wow fadeInUpQuick animated" data-wow-delay=".3s">
+                     <div class="icon-wrapper">
+                        <i class="icon-layers pulse-shrink">
+                        </i>
+                     </div>
+                     <h2>
+                        Simple Design
+                     </h2>
+                     <p>
+                        No tabs, multiple windows, or complex screens to scroll through.
+                     </p>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-6 col-lg-3 col-xs-12">
+                  <div class="service-item wow fadeInUpQuick animated" data-wow-delay=".6s">
+                     <div class="icon-wrapper">
+                        <i class="icon-settings pulse-shrink">
+                        </i>
+                     </div>
+                     <h2>
+                        Multiple Device Ready
+                     </h2>
+                     <p>
+                        Flux runs on your network, not a single device allowing tablet or smart phones access.
+                     </p>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-6 col-lg-3 col-xs-12">
+                  <div class="service-item wow fadeInUpQuick animated" data-wow-delay="0.9s">
+                     <div class="icon-wrapper">
+                        <i class="icon-energy pulse-shrink">
+                        </i>
+                     </div>
+                     <h2>
+                        Quick Customer Lookup
+                     </h2>
+                     <p>
+                        Find customers by name, phone number, or vehicle and avoid creating duplicate customer accounts.
+                     </p>
+                  </div>
+               </div>
+               <div class="col-sm-6 col-md-6 col-lg-3 col-xs-12">
+                  <div class="service-item  wow fadeInUpQuick animated" data-wow-delay="1.2s">
+                     <div class="icon-wrapper">
+                        <i class="icon-cup pulse-shrink">
+                        </i>
+                     </div>
+                     <h2>
+                        Detailed Reports
+                     </h2>
+                     <p>
+                        Track all the essentials with single day and date range reports.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="split section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="images">
+                     <img src="assets/img/about/plain-why-choose-us-2.png" alt="">
+                  </div>
+               </div>
+               <div class="col-md-8 col-sm-6 col-xs-12">
+                  <div class="content-inner">
+                     <h2 class="title">On Your Network or In the Cloud</h2>
+                     <p class="lead">With both on-premise and cloud versions available, a perfect solution is available for any shop. With our browser-based application, all tools and reports can be accessed by all devices on the network. With Flux's responsive design, it fits perfectly on any screen size from smart phones to widescreen monitors.</p>
+                     <div class="details-list">
+                        <div class="row">
+                           <div class="col-sm-6 col-xs-12">
+                              <h3>On-Premise</h3>
+                              <p>A locally installed version of Flux on your network allows blazing quick speeds, secure access to your data, and no need for an internet connection to write a work order.</p>
+                           </div>
+                           <div class="col-sm-6 col-xs-12">
+                              <h3>In The Cloud</h3>
+                              <p>Get more flexibility from the cloud by allowing managers and owners to run reports and monitor progress even when not at the shop.</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+		<section id="team" class="section">
+		   <div class="container">
+			  <h1 class="section-title wow fadeInUpQuick">
+				 Screenshots
+			  </h1>
+			  <p class="section-subcontent">Screenshots showing Flux in action include the dashboard that lists all open work orders and estimates, the create new ticket page, increasing inventory by adding a vendor invoice, and running reports for invoice totals.</p>
+			  <div class="row">
+				 <div class="col-sm-6 col-md-4 mb-30">
+					<div class="team-item wow fadeInUpQuick" data-wow-delay=".2s">
+					   <figure class="team-profile">
+						  <img src="assets/img/screenshots/th_dashboard.jpg" alt="Flux Shop Manager Dashboard" />
+						  <figcaption class="our-team">
+							 <div class="details">
+								<p class="content-white">
+									<a class="sup-title" href="assets/img/screenshots/dashboard.jpg" data-toggle="lightbox" data-gallery="homepage-gallery" data-title="Dashboard with Work Order Statuses">
+                                       Dashboard
+                                    </a>
+								</p>
+								<div class="orange-line"></div>
+								<p class="content-white">Showing work orders in various statuses along with an estimate.</p>
+							 </div>
+						  </figcaption>
+					   </figure>
+					   <div class="info">
+						  <h2>
+							 Dashboard
+						  </h2>
+					   </div>
+					</div>
+				 </div>
+				 <div class="col-sm-6 col-md-4 mb-30">
+					<div class="team-item wow fadeInUpQuick" data-wow-delay=".3s">
+					   <figure class="team-profile">
+						  <img src="assets/img/screenshots/th_newworkorder1.jpg" alt="Flux Shop Manager New Work Order Top" />
+						  <figcaption class="our-team">
+							 <div class="details">
+								<p class="content-white">
+									<a class="sup-title" href="assets/img/screenshots/newworkorder1.jpg" data-toggle="lightbox" data-gallery="homepage-gallery" data-title="New Work Order - Top">
+                                       New Work Order
+                                    </a>
+								</p>
+								<div class="orange-line"></div>
+								<p class="content-white">Top of new work order page showing ticket details.</p>
+							 </div>
+						  </figcaption>
+					   </figure>
+					   <div class="info">
+						  <h2>
+							 New Work Order
+						  </h2>
+					   </div>
+					</div>
+				 </div>
+				 <div class="col-sm-6 col-md-4 mb-30">
+					<div class="team-item wow fadeInUpQuick" data-wow-delay=".4s">
+					   <figure class="team-profile">
+						  <img src="assets/img/screenshots/th_newworkorder2.jpg" alt="Flux Shop Manager New Work Order Bottom" />
+						  <figcaption class="our-team">
+							 <div class="details">
+								<p class="content-white">
+									<a class="sup-title" href="assets/img/screenshots/newworkorder2.jpg" data-toggle="lightbox" data-gallery="homepage-gallery" data-title="New Work Order - Bottom">
+                                       New Work Order
+                                    </a>
+								</p>
+								<div class="orange-line"></div>
+								<p class="content-white">Bottom of new work order page showing customer, vehicle, and item details.</p>
+							 </div>
+						  </figcaption>
+					   </figure>
+					   <div class="info">
+						  <h2>
+							 New Work Order
+						  </h2>
+					   </div>
+					</div>
+				 </div>
+				 <div class="col-sm-6 col-md-4 mb-30">
+					<div class="team-item wow fadeInUpQuick" data-wow-delay=".5s">
+					   <figure class="team-profile">
+						  <img src="assets/img/screenshots/th_inventory.jpg" alt="Flux Shop Manager Add Inventory" />
+						  <figcaption class="our-team">
+							 <div class="details">
+								<p class="content-white">
+									<a class="sup-title" href="assets/img/screenshots/inventory.jpg" data-toggle="lightbox" data-gallery="homepage-gallery" data-title="Add Vendor Invoice">
+                                       Add Inventory
+                                    </a>
+								</p>
+								<div class="orange-line"></div>
+								<p class="content-white">Add vendor invoice to track inventory and accounts payable.</p>
+							 </div>
+						  </figcaption>
+					   </figure>
+					   <div class="info">
+						  <h2>
+							 Add Inventory
+						  </h2>
+					   </div>
+					</div>
+				 </div>
+				 <div class="col-sm-6 col-md-4 mb-30">
+					<div class="team-item wow fadeInUpQuick" data-wow-delay=".6s">
+					   <figure class="team-profile">
+						  <img src="assets/img/screenshots/th_reports1.jpg" alt="Flux Shop Manager Report Page Top" />
+						  <figcaption class="our-team">
+							 <div class="details">
+								<p class="content-white">
+									<a class="sup-title" href="assets/img/screenshots/reports1.jpg" data-toggle="lightbox" data-gallery="homepage-gallery" data-title="Posted Total Invoice Report Top">
+                                       Invoice Report
+                                    </a>
+								</p>
+								<div class="orange-line"></div>
+								<p class="content-white">Posted totals invoice report showing summary of payments received.</p>
+							 </div>
+						  </figcaption>
+					   </figure>
+					   <div class="info">
+						  <h2>
+							 Invoice Report
+						  </h2>
+					   </div>
+					</div>
+				 </div>
+				 <div class="col-sm-6 col-md-4 mb-30">
+					<div class="team-item wow fadeInUpQuick" data-wow-delay=".7s">
+					   <figure class="team-profile">
+						  <img src="assets/img/screenshots/th_reports2.jpg" alt="Flux Shop Manager Report Page Bottom" />
+						  <figcaption class="our-team">
+							 <div class="details">
+								<p class="content-white">
+									<a class="sup-title" href="assets/img/screenshots/reports2.jpg" data-toggle="lightbox" data-gallery="homepage-gallery" data-title="Posted Total Invoice Report Bottom">
+                                       Invoice Report
+                                    </a>
+								</p>
+								<div class="orange-line"></div>
+								<p class="content-white">Posted totals invoice report showing list of invoices.</p>
+							 </div>
+						  </figcaption>
+					   </figure>
+					   <div class="info">
+						  <h2>
+							 Invoice Report
+						  </h2>
+					   </div>
+					</div>
+				 </div>
+		   </div>
+		</section>
+      <section id="featured" class="section">
+         <div class="container">
+            <h1 class="section-title wow fadeInUpQuick">
+               Core Features
+            </h1>
+            <p class="section-subcontent">Flux includes the features to streamline your shop to optimize efficency and profitability.</p>
+            <div class="row">
+               <div class="col-md-4 col-sm-6 wow fadeInUpQuick" data-wow-delay=".2s" data-animation="fadeIn" data-animation-delay="01">
+                  <div class="featured-box">
+                     <div class="featured-icon">
+                        <i class="icon-present">
+                        </i>
+                     </div>
+                     <div class="featured-content">
+                        <h4>
+                           Sales Management
+                        </h4>
+                        <p>
+                           Use statuses to keep track of progress of each work order along with the time the customer was promised it would be complete.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-6 wow fadeInUpQuick" data-wow-delay=".4s" data-animation="fadeIn" data-animation-delay="01">
+                  <div class="featured-box">
+                     <div class="featured-icon">
+                        <i class="icon-rocket">
+                        </i>
+                     </div>
+                     <div class="featured-content">
+                        <h4>
+                           Customer Records
+                        </h4>
+                        <p>
+                           Customers and vehicles are easily searchable, and history is available from the new work order page.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-6 wow fadeInUpQuick" data-wow-delay=".6s" data-animation="fadeIn" data-animation-delay="01">
+                  <div class="featured-box">
+                     <div class="featured-icon">
+                        <i class="icon-pencil">
+                        </i>
+                     </div>
+                     <div class="featured-content">
+                        <h4>
+                           Inventory
+                        </h4>
+                        <p>
+                           Track inventory at your location along with inventory that is on a work order, but not yet billed out.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-6 wow fadeInUpQuick" data-wow-delay=".8s" data-animation="fadeIn" data-animation-delay="01">
+                  <div class="featured-box">
+                     <div class="featured-icon">
+                        <i class="icon-diamond icon-large icon-effect">
+                        </i>
+                     </div>
+                     <div class="featured-content">
+                        <h4>
+                           Invoicing
+                        </h4>
+                        <p>
+                           Invoice work orders with color-coded buttons showing profit margin, and generate statements for customers on net terms.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-6 wow fadeInUpQuick" data-wow-delay="1s" data-animation="fadeIn" data-animation-delay="01">
+                  <div class="featured-box">
+                     <div class="featured-icon">
+                        <i class="icon-settings">
+                        </i>
+                     </div>
+                     <div class="featured-content">
+                        <h4>
+                           Multi-Location
+                        </h4>
+                        <p>
+                           Run reports for each location quickly and share inventory information between locations.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-6 wow fadeInUpQuick" data-wow-delay="1.2s" data-animation="fadeIn" data-animation-delay="01">
+                  <div class="featured-box">
+                     <div class="featured-icon">
+                        <i class="icon-star">
+                        </i>
+                     </div>
+                     <div class="featured-content">
+                        <h4>
+                           Localization
+                        </h4>
+                        <p>
+                           Edit each store's technician list and store details to be printed out on invoices and estimates along with default payment method and labor rate.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+<!--
+      <section id="testimonial" class="section">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div id="testimonial-item" class="owl-carousel">
+                     <div class="item">
+                        <div class="testimonial-inner">
+                           <div class="testimonial-images">
+                              <img class="img-circle" src="assets/img/testimonial/img1.jpg" alt="">
+                              <h4>
+                                 Steve Austin <span><a href="#">envato.com </a></span>
+                              </h4>
+                           </div>
+                           <div class="rating-star">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                           </div>
+                           <p>
+                              Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="testimonial-inner">
+                           <div class="testimonial-images">
+                              <img class="img-circle" src="assets/img/testimonial/img2.jpg" alt="">
+                              <h4>
+                                 Chelsey Siltanen <span><a href="#">Microsoft</a></span>
+                              </h4>
+                           </div>
+                           <div class="rating-star">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                           </div>
+                           <p>
+                              Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="testimonial-inner">
+                           <div class="testimonial-images">
+                              <img class="img-circle" src="assets/img/testimonial/img3.jpg" alt="">
+                              <h4>
+                                 Pamela Fox <span><a href="#">Khan Academy</a></span>
+                              </h4>
+                           </div>
+                           <div class="rating-star">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                           </div>
+                           <p>
+                              Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="testimonial-inner">
+                           <div class="testimonial-images">
+                              <img class="img-circle" src="assets/img/testimonial/img4.jpg" alt="">
+                              <h4>
+                                 janna Hagan<span><a href="#">Google</a></span>
+                              </h4>
+                           </div>
+                           <div class="rating-star">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                           </div>
+                           <p>
+                              Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="testimonial-inner">
+                           <div class="testimonial-images">
+                              <img class="img-circle" src="assets/img/testimonial/img5.jpg" alt="">
+                              <h4>
+                                 Paul Tweedy<span><a href="#">BBC</a></span>
+                              </h4>
+                           </div>
+                           <div class="rating-star">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-o"></i>
+                              <i class="fa fa-star-o"></i>
+                           </div>
+                           <p>
+                              Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+-->
+      <footer>
+         <div class="container">
+            <div class="row section">
+               <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
+                  <h3 class="small-title">
+                     About Us
+                  </h3>
+                  <p>
+                     Flux Shop Manager is a POS and inventory management system for automotive repair and tire shops.
+                  </p>
+                  <ul class="mb-3">
+                     <li><i class="fa fa-phone"></i> (330) 267-4580</li>
+                  </ul>
+               </div>
+               <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
+                  <h3 class="small-title">
+                     Quick Links
+                  </h3>
+                  <ul class="menu">
+				     <li><a href="/">Home</a></li>
+                     <li><a href="/features">Features</a></li>
+                     <li><a href="/screenshots">Screenshots</a></li>
+                     <li><a href="/editions">Editions</a></li>
+                     <li><a href="/faq">FAQ</a></li>
+                     <li><a href="/contact">Contact</a></li>
+                  </ul>
+               </div>
+               <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
+                  <h3 class="small-title">
+                     In The Press
+                  </h3>
+                  <ul class="image-list">
+                     <li>
+                        <figure class="overlay">
+                           <img class="img-fluid" src="assets/img/press/p1.jpg" alt="NewsClipper">
+                        </figure>
+                        <div class="post-content">
+                           <h6 class="post-title"> <a href="http://www.newsclipper.org/hybrid-cloud-shop-management-system/">Hybrid Cloud Shop Management System</a> </h6>
+                           <div class="meta">
+                              <span class="date">NewsClipper</span>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+               <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
+                  <h3 class="small-title">
+                     Newsletter
+                  </h3>
+                  <form id="newsletterForm">
+                     <input type="text" placeholder="Email here" id="subEmail">
+                     <button type="submit"><i class="fa fa-paper-plane-o"></i></button>
+                  </form>
+				  <div id="newsletterMsg"></div>
+               </div>
+            </div>
+         </div>
+         <div id="copyright">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                     <p class="copyright-text">
+                       Copyright &copy; 2018 - 2021 <a href="/">FluxShopManager.com</a>
+                     </p>
+                  </div>
+                  <!-- <div class="col-md-6 col-sm-6">
+                     <div class="social-footer text-right">
+                        <a href="#"><i class="fa fa-facebook icon-round"></i></a>
+                        <a href="#"><i class="fa fa-twitter icon-round"></i></a>
+                        <a href="#"><i class="fa fa-linkedin icon-round"></i></a>
+                        <a href="#"><i class="fa fa-google-plus icon-round"></i></a>
+                     </div>
+                  </div> -->
+               </div>
+            </div>
+         </div>
+      </footer>
+      <a href="#" class="back-to-top">
+      <i class="fa fa-angle-up">
+      </i>
+      </a>
+      <script src="assets/js/jquery-min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="assets/js/jquery.mixitup.js"></script>
+      <script src="assets/js/smoothscroll.js"></script>
+      <script src="assets/js/wow.js"></script>
+      <script src="assets/js/owl.carousel.js"></script>
+      <script src="assets/js/waypoints.min.js"></script>
+      <script src="assets/js/jquery.counterup.min.js"></script>
+      <script src="assets/js/jquery.slicknav.js"></script>
+      <script src="assets/js/jquery.appear.js"></script>
+      <script src="assets/js/form-validator.min.js"></script>
+      <script src="assets/js/contact-form-script.min.js"></script>
+	  <script src="assets/js/ekko-lightbox.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.js"></script>
+      <script src="assets/js/main.js"></script>
+   </body>
+</html>
